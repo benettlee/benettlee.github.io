@@ -1,11 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Terminal界面基本操作</title>
+    <url>/2020/04/09/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="Terminal界面基本操作"><a href="#Terminal界面基本操作" class="headerlink" title="Terminal界面基本操作"></a>Terminal界面基本操作</h2><a id="more"></a>
+<h3 id="文件操作："><a href="#文件操作：" class="headerlink" title="文件操作："></a>文件操作：</h3><ul>
+<li>新建文件夹： mkdir Folder</li>
+<li>复制文件夹：cp -r Folder NewFolder</li>
+<li>移动文件夹：mv Folder NewFolder</li>
+<li>删除文佳佳：rm -r Folder</li>
+<li>进入文件夹：cd Folder</li>
+<li>进入上一层文件夹： cd ../;</li>
+<li>新建文件：touch NewFile</li>
+<li>复制文件：cp File NewFile</li>
+<li>移动文件：mv File NewFile</li>
+<li>删除文件：rm File</li>
+<li>浏览当前目录：ls</li>
+</ul>
+<h6 id="区分文件夹和文件：ls-color"><a href="#区分文件夹和文件：ls-color" class="headerlink" title="区分文件夹和文件：ls -color"></a>区分文件夹和文件：ls -color</h6><h6 id="详细文件信息：ls-l-t-hcolor"><a href="#详细文件信息：ls-l-t-hcolor" class="headerlink" title="详细文件信息：ls -l -t -hcolor"></a>详细文件信息：ls -l -t -hcolor</h6><ul>
+<li>查看命令使用说明：command –help</li>
+</ul>
+<hr>
+<h2 id="Terminal常用工具"><a href="#Terminal常用工具" class="headerlink" title="Terminal常用工具"></a>Terminal常用工具</h2><ul>
+<li>shell语言：bash</li>
+<li>文本阅读工具：vim</li>
+<li>文本搜索工具：grep</li>
+<li>文本流编辑工具：sed/awk</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>code</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/06/06/hello-world/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容."><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="您好, 这里需要密码." /><label>您好, 这里需要密码.</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="c507e03e2e507ad226b59c4fb6cd671cebbb0bac6cdfb1f6b589e196b3d76127">164d17bcd8d59011d5c0f88ba66345b680f2d8338abbcc8aaeaad3ebeb256978da746254246222d2d57037821c80873d0b1fe7f8875cd5a7acde2013355f3c0c71e30953f1b9d3aff21f97396ee2bdd1a20cc4c777a5c2fe3e9367cf025390b4887d7aee08e5d6f16db66d58ecfa3746f9bb88a06cf1d8fce11688b790af6e90a73d09d325be8c414faed846b9065b11de2cdc1ff7dbacf3531d32480990ea4510f5eeacae2c26c445032333de0548728e3d695783ad26d9316dd81b286b9a22233d5ec53788081179409b2159eb30670917e1b9a60883f7a07804c3791f4b87d6ab984aba299ec086ba494d05f6ccebfed9fb027863935b8f1a4ba0da0385cb893c12770d3fcc27ef032f5cbfe0d8e448638c9a2a6c3531939d43cd27991c5f269f7068323e6fa5c9dbbfd2cee01a50dceccde5beca111a6c7a2a84b84bb1f0f79a4b14633432a6ac1e94841459e27984f2d084e45d1b8b9326b568ff611b2be63eee354ef31aec34e80cecb98cbe910d755f94dd77ebc8e612dab9d41f2112aab5b8262a8527a561763bb48768f80166fb4271a72849e502841a622a38d1a5663dad50461371e4de140a96822c26c0d071cf9ca42c6c9d1e00e9d0d07b65a587be43c561afe9dfada70127da33474126f306099ce0c1eafed1fa891f6c3e864818cd28582133ba921617bb0f0ec7775f945cff0dab1c68b65ea7299e999f4a5fbce4f8ba1a1279e928740b2812b30ed5b04c84fd036f4735af3110080d9513bff04b5423319757d6445c41937d8303e93513f84dbedf5a3029ee466c6077d1be9e4d8521ed3757e8b8af73e6d5998946bcf70d0be72a7df4f95697dfbb9dd2547cb7c4b4254bb72a4a30b3ea9916e863806539201d2c687d5c9f4c31c22cee8430d91b5f47d58250b13c298064b3cdda47522ec5bffaf50a9467dab5c4a1b8ba0068457d92ede114d07db4aa865f64a6c08a51d03b139704890b13efc59c67b9448e1e028fb17c235cddda9205622fff06f24c06f4a5d997c2a948a20113a7e0e42ef70f5a1bd0972ab947189da875e77d9cc98d0d354ab0fae0644d6b79e2c21462fef08aba507a46941437d57a16bd092301497dc031eb2a8fa0be401577ffe30fc6f64ad3c093b410e1b46824ee6941b6bb23c96a4688bf615ef27560317166a9611de18a382140e57bb183ce28f53715cc371a83c96755e30e0efab2224bd3a453797e5d01de3107edc142a17eca22b7ba1100903b94dd58e03a05b7727913c1a4cd4a9f2dea2d3dcb7e41fd15bb98e473940de0e6d35b4c075b0c1828cb0a41ce96f13ee621d59b58630c0866baf0a97413a364362e91c56a8bf65d154b939359b8ecc6f8ae74122db65a183d723d3f23e4dab3951897a45d14c855ec098f75a2fc2d96199274dfff0d11c09027e2ada9504a29060ab6cd8711f81c793edce55faf3949404a821e9121eee7fae5a7f86c38388336c0d14d7cc336bcbc1f44bf030d24e42614a1475c1e6ddbd048b26bb6c947371ff934d5dbc490e5412e7351c1de4091ec9c4dc5bdc747e09b4091103caead664538e3d78a86165a0fee98eb0634e37e49ea7343ff56654639860714ff3911ad6c2ec351b671d92239743eb4ac3676dcfb9a906067147641f590d4ee8981357bad863de7cae84668cc48d5e406c8d3d1a3ca9c647669a2fd63170cb8e116328c081127843dc25ddaa74259f9500e43cea5a9f1eb0b0b707eb0c803c4dd6a10315987a29ce07e7b83b84b1c8e27ceee5588ff671aca45cf8de7827dcaf5b86828cce5cbce021153f618fc440e75f00a59dad68fbce3860b22a4d19cfa706208561d41dfea8e497e1060c19cde4a75fc54826a81cb6739bc904eff64320d037c7368f534aff04ff7bd5a7412e21b53d9f8cb715b66f4dfe4860b4e8dfc5d6a63287221229e5ef3b0cc6a48b7b5c2351287b63abc3bdb112bf4ea99bb77173ca3bc09dad7bba56e1f351b5d7348dc57d4765900b56ad61ffd84542f05aef91bd210f39743691f42698e40f5b38e4b0c391b4b909580720047d40579c70072d69e4d4a9039ba38f7ec77ad1c3096578f730289cb04ec73bfb926ea9f46c5763172e7e83fe6e3df2ef60b084add1c3d731c85aa0702295b22f2ca0084be1a2b827e4b313178615ce52d16fd90f677fcb28cc91dcb6033a42159cbd45ac6e772451d7a827055215dcf5015e4c936bd67c13ba609ab8f2799b9a0815840d1f9fcc9729fd68d7c3cff43baaf5249cf8290338407f22fee8a2e4745dc7c9349b36a41457438704ce405f7598dc7267f8057b13dd590776d6fa93b89094d76087faa7f550b764f941017e51ac242a7e9507bfc71afa52021c81d00d19874d6d8934c780fd84741c3f6dd3d183f338b1ea3645e26f6dc9f215b38c407b6eb417efbe844ad7d2921a792f27ac9290afbabbb268c13d423a2319122d42a9872f39c356035dfa3d9d8fff8cb7321735f6de827e6f94a07b5e3643d7cb353cbed4effd829f1c4620ce03ad97f9f463df05893d0efb28c12ae483f87941162ee6b0706ccc976e1de383fc9cbbf085aa7132193de2579c26492fb587c8d3bc98217df90b06de89575751eba6b519c0e385467c92e0ccdce6f7d4f3da894dd6ec6015d7a355f067a184b7c1ec0b75530e73eaf38696c2c24fc77ebdea2b01ff9617ba3a75dc19fbc0aba1635a3a3915df1484d6473538446abbae115411246eebfbc611fc3e9a235742a396a118e19f171ab9fed3be9b775fa99c9e2a190d20c47d2da9b3fb61a9dc9bdffb825a2b786652855548f16d1451f8fc5fd38b536444889560cd2d7bf6d50816dcf7672c96715961cd6b944c0ace474ebee69ee8625a1f00f77bf8d03a2a3bb2bcbb4810182ec45bbed1687418819871cfa774ca5ef1e89411986fe618d84d2795c552672fb013cf4e2e6851ad73bb242200610d8747016a415e03d5d332ddc319730e0a56a872921d39f2043bfe35984fae712da32af0f48421ef4791f7d94e0ea5a7a541472bd28ec3a8fcd68f8b5c854f80d1c4a078f75e04bdd9764fba0b68ba5e8111731b5d9253e393642cd7dae76abb2c32d9700bb1099ab3b0e759b1544e7dad0930cb02c6dac89ee789fd419aa60182bb5966a3461a9f7a443e8c7c642e74fdd554e61da0acf2336108aabfbd70438c6445ac177cc8b67c1d6b173421e7262dd440d504ea1c42229d0cd935f5407e6d859304b58098287a7fc37883e1852acbc480a226c11f54c1b8ba4bb29b7ada4d823361f026a1d07c5446d42d107d2c314586524f8b5b1f3ee2525a7b2157214fb74c235f7dab6372ed3e724b255b1797ea8ff2d1cc18284c1ccb9d3a91c1ac143d26727fd6e5b3c9a6a25b6339050867d3906d4ea5693ca098137f1ccbc0cf7abd8e783d10ac95108edca6b680a5ddb42b4c442c8614e105ca16651f85706e58e19f465a934a25dd2f4495b16676abb77163a438a650d5cb7c85fd795f89f8b825726740121c9485ca37c16261cc2e8bc1dd2b28464fa4b39fc5cd6a009f51b484fedf546b98d24f80c0c902ebfc5daa7f917c0d42fb3d63ab83af14c0ed38b7b58b03345ea4b8401b2f255c82e27d1bb3635e05704e0018f6ef5877c75c303881d713be22c4e8642d7a079c0c48b1ac39f6e076013f20c4b0459c4908df48f85156f0bd7a160d72ec71084508a075189037b343ca7c1b33ba040c73d68e4cb5830524aea26eebf53542b3be0cac35cbe59046d1578535b68faf3d714652ae5c582bf97</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>默认</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建本地blast网页--sequenceserver</title>
+    <url>/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/</url>
+    <content><![CDATA[<p><strong>目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。</strong></p>
+<a id="more"></a>
+
+<h2 id="step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST"><a href="#step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST" class="headerlink" title="step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+"></a>step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ruby          </span><br><span class="line">sudo apt-get install gem           </span><br><span class="line">sudo apt-get install ruby-dev      </span><br><span class="line">sudo apt-get install ncbi-blast+</span><br></pre></td></tr></table></figure>
+
+<h2 id="step2-安装sequenceserver"><a href="#step2-安装sequenceserver" class="headerlink" title="step2: 安装sequenceserver"></a>step2: 安装sequenceserver</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo gem install sequenceserver</span><br></pre></td></tr></table></figure>
+
+<h2 id="step3-sequenceserver建库"><a href="#step3-sequenceserver建库" class="headerlink" title="step3: sequenceserver建库"></a>step3: sequenceserver建库</h2><p>创建一个db(包含nucleotide和protein)数据库，并使用<code>makeblastbd</code>对其建立索引。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo makeblastdb -in `nucleotide`.fa -dbtype nucl -out `nucleotide`  ##核酸</span><br><span class="line">sudo makeblastdb -in `protein`.fa -dbtype prot -out `protein`  ##蛋白</span><br></pre></td></tr></table></figure>
+<h2 id="step4-运行sequenceserver"><a href="#step4-运行sequenceserver" class="headerlink" title="step4: 运行sequenceserver"></a>step4: 运行sequenceserver</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo sequenceserver -d /opt/sequenceserver/db/ -n 16 -p 4567</span><br></pre></td></tr></table></figure>
+
+<p>程序运行后，在浏览器中打开 localhost:4567 即可访问本地化blast网页服务。</p>
+<p>常用参数：</p>
+<blockquote>
+<p>-b | –bin<br>    输入ncbi-blast+的bin文件路径<br>-d | –database_dir<br>    输入blast数据库路径<br>-n | –num_threads<br>    设置使用的CPU线程数<br>-p | –port<br>    设置使用的端口号，默认为4567</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>skill</category>
+      </categories>
+      <tags>
+        <tag>skill</tag>
       </tags>
   </entry>
   <entry>
@@ -70,68 +132,6 @@
       </categories>
       <tags>
         <tag>skill</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建本地blast网页--sequenceserver</title>
-    <url>/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/</url>
-    <content><![CDATA[<p><strong>目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。</strong></p>
-<a id="more"></a>
-
-<h2 id="step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST"><a href="#step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST" class="headerlink" title="step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+"></a>step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ruby          </span><br><span class="line">sudo apt-get install gem           </span><br><span class="line">sudo apt-get install ruby-dev      </span><br><span class="line">sudo apt-get install ncbi-blast+</span><br></pre></td></tr></table></figure>
-
-<h2 id="step2-安装sequenceserver"><a href="#step2-安装sequenceserver" class="headerlink" title="step2: 安装sequenceserver"></a>step2: 安装sequenceserver</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo gem install sequenceserver</span><br></pre></td></tr></table></figure>
-
-<h2 id="step3-sequenceserver建库"><a href="#step3-sequenceserver建库" class="headerlink" title="step3: sequenceserver建库"></a>step3: sequenceserver建库</h2><p>创建一个db(包含nucleotide和protein)数据库，并使用<code>makeblastbd</code>对其建立索引。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo makeblastdb -in `nucleotide`.fa -dbtype nucl -out `nucleotide`  ##核酸</span><br><span class="line">sudo makeblastdb -in `protein`.fa -dbtype prot -out `protein`  ##蛋白</span><br></pre></td></tr></table></figure>
-<h2 id="step4-运行sequenceserver"><a href="#step4-运行sequenceserver" class="headerlink" title="step4: 运行sequenceserver"></a>step4: 运行sequenceserver</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo sequenceserver -d /opt/sequenceserver/db/ -n 16 -p 4567</span><br></pre></td></tr></table></figure>
-
-<p>程序运行后，在浏览器中打开 localhost:4567 即可访问本地化blast网页服务。</p>
-<p>常用参数：</p>
-<blockquote>
-<p>-b | –bin<br>    输入ncbi-blast+的bin文件路径<br>-d | –database_dir<br>    输入blast数据库路径<br>-n | –num_threads<br>    设置使用的CPU线程数<br>-p | –port<br>    设置使用的端口号，默认为4567</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>skill</category>
-      </categories>
-      <tags>
-        <tag>skill</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Terminal界面基本操作</title>
-    <url>/2020/04/09/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h2 id="Terminal界面基本操作"><a href="#Terminal界面基本操作" class="headerlink" title="Terminal界面基本操作"></a>Terminal界面基本操作</h2><a id="more"></a>
-<h3 id="文件操作："><a href="#文件操作：" class="headerlink" title="文件操作："></a>文件操作：</h3><ul>
-<li>新建文件夹： mkdir Folder</li>
-<li>复制文件夹：cp -r Folder NewFolder</li>
-<li>移动文件夹：mv Folder NewFolder</li>
-<li>删除文佳佳：rm -r Folder</li>
-<li>进入文件夹：cd Folder</li>
-<li>进入上一层文件夹： cd ../;</li>
-<li>新建文件：touch NewFile</li>
-<li>复制文件：cp File NewFile</li>
-<li>移动文件：mv File NewFile</li>
-<li>删除文件：rm File</li>
-<li>浏览当前目录：ls</li>
-</ul>
-<h6 id="区分文件夹和文件：ls-color"><a href="#区分文件夹和文件：ls-color" class="headerlink" title="区分文件夹和文件：ls -color"></a>区分文件夹和文件：ls -color</h6><h6 id="详细文件信息：ls-l-t-hcolor"><a href="#详细文件信息：ls-l-t-hcolor" class="headerlink" title="详细文件信息：ls -l -t -hcolor"></a>详细文件信息：ls -l -t -hcolor</h6><ul>
-<li>查看命令使用说明：command –help</li>
-</ul>
-<hr>
-<h2 id="Terminal常用工具"><a href="#Terminal常用工具" class="headerlink" title="Terminal常用工具"></a>Terminal常用工具</h2><ul>
-<li>shell语言：bash</li>
-<li>文本阅读工具：vim</li>
-<li>文本搜索工具：grep</li>
-<li>文本流编辑工具：sed/awk</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>code</tag>
       </tags>
   </entry>
 </search>

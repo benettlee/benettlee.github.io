@@ -339,7 +339,7 @@
   </ul>
 
         <div class="reward-container">
-  <div></div>
+  <div>觉得文章对您有帮助请我喝杯奶茶吧😉</div>
   <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
     <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
   </button>
@@ -348,11 +348,6 @@
       <div style="display: inline-block;">
         <img src="/images/wc.png" alt="李鹏程 微信支付">
         <p>微信支付</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/images/zfb.png" alt="李鹏程 支付宝">
-        <p>支付宝</p>
       </div>
 
   </div>
@@ -375,10 +370,39 @@
 </ul>
 </div>
 
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/skill/" rel="tag"># skill</a>
+              <a href="/tags/skill/" rel="tag"><i class="fa fa-tag"></i> skill</a>
           </div>
 
         
@@ -808,9 +832,11 @@ if(canvas.getContext){
 
         
 
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <div class="copyright">
   
-  &copy; 2018 – 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -829,8 +855,12 @@ if(canvas.getContext){
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">8 分钟</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> 强力驱动
-  </div><div class="translate-style">
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div><div class="translate-style">
 繁/简：<a id="translateLink" href="javascript:translatePage();" rel="external nofollow noreferrer">繁体
 </a>
 </div>
@@ -844,6 +874,7 @@ var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
 var translateButtonId = "translateLink"; //默认互换id
 translateInitilization();
 </script>
+
 
         
 
