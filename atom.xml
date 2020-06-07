@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>BenettLee Blog</title>
+  <icon>https://benettlee.github.io/icon.png</icon>
+  <subtitle>好记性不如烂笔头</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://benettlee.github.io/"/>
+  <updated>2020-06-04T13:32:30.839Z</updated>
+  <id>https://benettlee.github.io/</id>
+  
+  <author>
+    <name>李鹏程</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://benettlee.github.io/2020/06/06/hello-world/"/>
+    <id>https://benettlee.github.io/2020/06/06/hello-world/</id>
+    <published>2020-06-06T14:06:06.328Z</published>
+    <updated>2020-06-04T13:32:30.839Z</updated>
+    
+    <summary type="html">
+    
+      有东西被加密了, 请输入密码查看.
+    
+    </summary>
+    
+    
+    
+      <category term="默认" scheme="https://benettlee.github.io/tags/%E9%BB%98%E8%AE%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建本地blast网页--sequenceserver</title>
+    <link href="https://benettlee.github.io/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/"/>
+    <id>https://benettlee.github.io/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/</id>
+    <published>2020-04-21T01:06:55.000Z</published>
+    <updated>2020-06-04T13:32:30.859Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="skill" scheme="https://benettlee.github.io/categories/skill/"/>
+    
+    
+      <category term="skill" scheme="https://benettlee.github.io/tags/skill/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建私有云盘nextcloud</title>
+    <link href="https://benettlee.github.io/2020/04/09/%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98nextcloud/"/>
+    <id>https://benettlee.github.io/2020/04/09/%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98nextcloud/</id>
+    <published>2020-04-08T22:55:06.000Z</published>
+    <updated>2020-06-04T13:32:30.866Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;&lt;em&gt;安装 NextCloud 18 在 Ubuntu 18 ，另外还需安装 Apache2, MariaDB 和 PHP&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="skill" scheme="https://benettlee.github.io/categories/skill/"/>
+    
+    
+      <category term="skill" scheme="https://benettlee.github.io/tags/skill/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Terminal界面基本操作</title>
+    <link href="https://benettlee.github.io/2020/04/09/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>https://benettlee.github.io/2020/04/09/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
+    <published>2020-04-08T19:29:17.000Z</published>
+    <updated>2020-06-04T13:32:30.851Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Terminal界面基本操作&quot;&gt;&lt;a href=&quot;#Terminal界面基本操作&quot; class=&quot;headerlink&quot; title=&quot;Terminal界面基本操作&quot;&gt;&lt;/a&gt;Terminal界面基本操作&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://benettlee.github.io/categories/Linux/"/>
+    
+    
+      <category term="code" scheme="https://benettlee.github.io/tags/code/"/>
+    
+  </entry>
+  
+</feed>
