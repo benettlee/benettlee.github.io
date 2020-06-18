@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://benettlee.github.io/"/>
-  <updated>2020-06-18T14:29:46.286Z</updated>
+  <updated>2020-06-18T14:30:57.314Z</updated>
   <id>https://benettlee.github.io/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Terminal界面基本操作</title>
-    <link href="https://benettlee.github.io/2020/11/11/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
-    <id>https://benettlee.github.io/2020/11/11/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
-    <published>2020-11-11T13:29:17.000Z</published>
-    <updated>2020-06-18T14:29:46.286Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Terminal界面基本操作"><a href="#Terminal界面基本操作" class="headerlink" title="Terminal界面基本操作"></a>Terminal界面基本操作</h2><a id="more"></a><h3 id="文件操作："><a href="#文件操作：" class="headerlink" title="文件操作："></a>文件操作：</h3><ul><li>新建文件夹： mkdir Folder</li><li>复制文件夹：cp -r Folder NewFolder</li><li>移动文件夹：mv Folder NewFolder</li><li>删除文佳佳：rm -r Folder</li><li>进入文件夹：cd Folder</li><li>进入上一层文件夹： cd ../;</li><li>新建文件：touch NewFile</li><li>复制文件：cp File NewFile</li><li>移动文件：mv File NewFile</li><li>删除文件：rm File</li><li>浏览当前目录：ls</li></ul><h6 id="区分文件夹和文件：ls-color"><a href="#区分文件夹和文件：ls-color" class="headerlink" title="区分文件夹和文件：ls -color"></a>区分文件夹和文件：ls -color</h6><h6 id="详细文件信息：ls-l-t-hcolor"><a href="#详细文件信息：ls-l-t-hcolor" class="headerlink" title="详细文件信息：ls -l -t -hcolor"></a>详细文件信息：ls -l -t -hcolor</h6><ul><li>查看命令使用说明：command –help</li></ul><hr><h2 id="Terminal常用工具"><a href="#Terminal常用工具" class="headerlink" title="Terminal常用工具"></a>Terminal常用工具</h2><ul><li>shell语言：bash</li><li>文本阅读工具：vim</li><li>文本搜索工具：grep</li><li>文本流编辑工具：sed/awk</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Terminal界面基本操作&quot;&gt;&lt;a href=&quot;#Terminal界面基本操作&quot; class=&quot;headerlink&quot; title=&quot;Terminal界面基本操作&quot;&gt;&lt;/a&gt;Terminal界面基本操作&lt;/h2&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://benettlee.github.io/categories/Linux/"/>
-    
-    
-      <category term="code" scheme="https://benettlee.github.io/tags/code/"/>
-    
-  </entry>
   
   <entry>
     <title>搭建本地blast网页--sequenceserver</title>
@@ -82,6 +59,29 @@
     
     
       <category term="skill" scheme="https://benettlee.github.io/tags/skill/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Terminal界面基本操作</title>
+    <link href="https://benettlee.github.io/2019/11/11/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>https://benettlee.github.io/2019/11/11/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
+    <published>2019-11-11T13:29:17.000Z</published>
+    <updated>2020-06-18T14:39:10.485Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Terminal界面基本操作"><a href="#Terminal界面基本操作" class="headerlink" title="Terminal界面基本操作"></a>Terminal界面基本操作</h2><a id="more"></a><h3 id="文件操作："><a href="#文件操作：" class="headerlink" title="文件操作："></a>文件操作：</h3><ul><li>新建文件夹： mkdir Folder</li><li>复制文件夹：cp -r Folder NewFolder</li><li>移动文件夹：mv Folder NewFolder</li><li>删除文佳佳：rm -r Folder</li><li>进入文件夹：cd Folder</li><li>进入上一层文件夹： cd ../;</li><li>新建文件：touch NewFile</li><li>复制文件：cp File NewFile</li><li>移动文件：mv File NewFile</li><li>删除文件：rm File</li><li>浏览当前目录：ls</li></ul><h6 id="区分文件夹和文件：ls-color"><a href="#区分文件夹和文件：ls-color" class="headerlink" title="区分文件夹和文件：ls -color"></a>区分文件夹和文件：ls -color</h6><h6 id="详细文件信息：ls-l-t-hcolor"><a href="#详细文件信息：ls-l-t-hcolor" class="headerlink" title="详细文件信息：ls -l -t -hcolor"></a>详细文件信息：ls -l -t -hcolor</h6><ul><li>查看命令使用说明：command –help</li></ul><hr><h2 id="Terminal常用工具"><a href="#Terminal常用工具" class="headerlink" title="Terminal常用工具"></a>Terminal常用工具</h2><ul><li>shell语言：bash</li><li>文本阅读工具：vim</li><li>文本搜索工具：grep</li><li>文本流编辑工具：sed/awk</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Terminal界面基本操作&quot;&gt;&lt;a href=&quot;#Terminal界面基本操作&quot; class=&quot;headerlink&quot; title=&quot;Terminal界面基本操作&quot;&gt;&lt;/a&gt;Terminal界面基本操作&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://benettlee.github.io/categories/Linux/"/>
+    
+    
+      <category term="code" scheme="https://benettlee.github.io/tags/code/"/>
     
   </entry>
   
