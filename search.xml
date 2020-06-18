@@ -162,8 +162,8 @@
   <entry>
     <title>python自动化批量下载外文文献</title>
     <url>/2020/05/01/python%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD%E5%A4%96%E6%96%87%E6%96%87%E7%8C%AE/</url>
-    <content><![CDATA[<h2 id="Part-1：-学习别人造好的轮子记录笔记"><a href="#Part-1：-学习别人造好的轮子记录笔记" class="headerlink" title="Part 1： 学习别人造好的轮子记录笔记"></a>Part 1： 学习别人造好的轮子记录笔记</h2><p>######</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -U scidownl</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="Part-1：-学习别人造好的轮子记录笔记"><a href="#Part-1：-学习别人造好的轮子记录笔记" class="headerlink" title="Part 1： 学习别人造好的轮子记录笔记"></a>Part 1： 学习别人造好的轮子记录笔记</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -U scidownl</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scidownl -h</span><br></pre></td></tr></table></figure>
 
