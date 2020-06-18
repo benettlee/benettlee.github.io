@@ -23,20 +23,20 @@
     var CONFIG = {"hostname":"benettlee.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。">
+  <meta name="description" content="好记性不如烂笔头！ 随着RNA-seq高通量测序技术的普及，使得单纯的qRTPCR数据不再满足实验需求。因此本文结合实际分析流程来简单介绍有参转录组的分析。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建本地blast网页--sequenceserver">
-<meta property="og:url" content="https://benettlee.github.io/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/index.html">
+<meta property="og:title" content="RNAseq分析流程">
+<meta property="og:url" content="https://benettlee.github.io/2020/04/19/RNAseq%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="BenettLee Blog">
-<meta property="og:description" content="目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。">
+<meta property="og:description" content="好记性不如烂笔头！ 随着RNA-seq高通量测序技术的普及，使得单纯的qRTPCR数据不再满足实验需求。因此本文结合实际分析流程来简单介绍有参转录组的分析。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-13T11:06:55.000Z">
-<meta property="article:modified_time" content="2020-06-18T14:50:32.634Z">
+<meta property="article:published_time" content="2020-04-18T22:48:46.000Z">
+<meta property="article:modified_time" content="2020-06-18T15:06:55.682Z">
 <meta property="article:author" content="李鹏程">
 <meta property="article:tag" content="bioinfo">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://benettlee.github.io/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/">
+<link rel="canonical" href="https://benettlee.github.io/2020/04/19/RNAseq%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>搭建本地blast网页--sequenceserver | BenettLee Blog</title>
+  <title>RNAseq分析流程 | BenettLee Blog</title>
   
 
 
@@ -204,7 +204,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://benettlee.github.io/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/">
+    <link itemprop="mainEntityOfPage" href="https://benettlee.github.io/2020/04/19/RNAseq%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/tx.jpg">
@@ -217,7 +217,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          搭建本地blast网页--sequenceserver
+          RNAseq分析流程
         </h1>
 
         <div class="post-meta">
@@ -227,14 +227,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-13 11:06:55" itemprop="dateCreated datePublished" datetime="2020-02-13T11:06:55Z">2020-02-13</time>
+              <time title="创建时间：2020-04-18 22:48:46" itemprop="dateCreated datePublished" datetime="2020-04-18T22:48:46Z">2020-04-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-18 14:50:32" itemprop="dateModified" datetime="2020-06-18T14:50:32Z">2020-06-18</time>
+                <time title="修改时间：2020-06-18 15:06:55" itemprop="dateModified" datetime="2020-06-18T15:06:55Z">2020-06-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,14 +252,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>738</span>
+              <span>5.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -271,22 +271,111 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。</strong></p>
+        <p><strong>好记性不如烂笔头！</strong></p>
+<p>随着RNA-seq高通量测序技术的普及，使得单纯的qRTPCR数据不再满足实验需求。因此本文结合实际分析流程来简单介绍有参转录组的分析。</p>
 <a id="more"></a>
+<h3 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、将windows下编辑文件转换为linux文件，防止发生错误</span></span><br><span class="line"><span class="comment"># apt install dos2unix</span></span><br><span class="line">dos2unix merged.txt</span><br><span class="line">dos2unix: 正在转换文件 merged.txt 为Unix格式...</span><br><span class="line"><span class="comment"># 2、查看linux当前用户</span></span><br><span class="line">w</span><br><span class="line"><span class="comment"># 3、查看文件夹下的文件数目</span></span><br><span class="line">ls -l |grep <span class="string">"^-"</span>|wc -l</span><br><span class="line">或</span><br><span class="line">find ./folder_name -<span class="built_in">type</span> f | wc -l     注：folder_name 指的是：当前目录下的你要查询的文件夹名</span><br></pre></td></tr></table></figure>
 
-<h2 id="step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST"><a href="#step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST" class="headerlink" title="step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+"></a>step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ruby          </span><br><span class="line">sudo apt-get install gem           </span><br><span class="line">sudo apt-get install ruby-dev      </span><br><span class="line">sudo apt-get install ncbi-blast+</span><br></pre></td></tr></table></figure>
+<h2 id="RNAseq简单分析流程"><a href="#RNAseq简单分析流程" class="headerlink" title="RNAseq简单分析流程"></a>RNAseq简单分析流程</h2><h3 id="install-softwares"><a href="#install-softwares" class="headerlink" title="install softwares"></a>install softwares</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">conda install -c bioconda -n RNAseq samtools </span><br><span class="line">conda install -c bioconda -n RNAseq multiqc</span><br><span class="line">conda install -c bioconda -n RNAseq hisat2</span><br><span class="line">conda install -c bioconda -n RNAseq cufflinks</span><br><span class="line">conda install -c bioconda -n RNAseq taco</span><br><span class="line">conda install -c bioconda -n RNAseq HTSeq </span><br><span class="line"><span class="comment">##使用featureCounts########################</span></span><br><span class="line">conda install -c bioconda -n RNAseq subread </span><br><span class="line"><span class="comment">###########################################</span></span><br><span class="line">conda install -n RNAseq fastp</span><br><span class="line">conda install -c bioconda -n RNAseq gffcompare</span><br><span class="line">conda install -c bioconda -n RNAseq rmats rmats2sashimiplot</span><br></pre></td></tr></table></figure>
 
-<h2 id="step2-安装sequenceserver"><a href="#step2-安装sequenceserver" class="headerlink" title="step2: 安装sequenceserver"></a>step2: 安装sequenceserver</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install sequenceserver</span><br></pre></td></tr></table></figure>
-
-<h2 id="step3-sequenceserver建库"><a href="#step3-sequenceserver建库" class="headerlink" title="step3: sequenceserver建库"></a>step3: sequenceserver建库</h2><p>创建一个db(包含nucleotide和protein)数据库，并使用<code>makeblastbd</code>对其建立索引。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo makeblastdb -in `nucleotide`.fa -dbtype nucl -out `nucleotide`  ##核酸</span><br><span class="line">sudo makeblastdb -in `protein`.fa -dbtype prot -out `protein`  ##蛋白</span><br></pre></td></tr></table></figure>
-<h2 id="step4-运行sequenceserver"><a href="#step4-运行sequenceserver" class="headerlink" title="step4: 运行sequenceserver"></a>step4: 运行sequenceserver</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sequenceserver -d /opt/sequenceserver/db/ -n 16 -p 4567</span><br></pre></td></tr></table></figure>
-
-<p>程序运行后，在浏览器中打开 localhost:4567 即可访问本地化blast网页服务。</p>
-<p>常用参数：</p>
-<blockquote>
-<p>-b | –bin<br>    输入ncbi-blast+的bin文件路径<br>-d | –database_dir<br>    输入blast数据库路径<br>-n | –num_threads<br>    设置使用的CPU线程数<br>-p | –port<br>    设置使用的端口号，默认为4567</p>
+<h3 id="raw-data的过滤和清除不可信数据（clean-reads）"><a href="#raw-data的过滤和清除不可信数据（clean-reads）" class="headerlink" title="raw data的过滤和清除不可信数据（clean reads）"></a>raw data的过滤和清除不可信数据（clean reads）</h3><h4 id="用fastp对转录组数据做QC"><a href="#用fastp对转录组数据做QC" class="headerlink" title="用fastp对转录组数据做QC"></a>用fastp对转录组数据做QC</h4><blockquote>
+<p>特点</p>
 </blockquote>
+<ul>
+<li>对数据自动进行全方位质控，生成人性化的报告；</li>
+<li>过滤功能(低质量,太短,太多N……)；</li>
+<li>对每一个序列的头部或尾部，计算滑动窗内的质量均值，并将均值较低的子序列进行切除(类似 Trimmomatic 的做法,但是快非常多)；</li>
+<li>全局剪裁 (在头/尾部，不影响去重)，对于 Illumina 下机数据往往最后一到两个 cycle 需要这样处理；</li>
+<li>去除接头污染。厉害的是，你不用输入接头序列，因为算法会自动识别接头序列并进行剪裁；</li>
+<li>对于双端测序(PE)的数据，软件会自动查找每一对read的重叠区域，并对该重叠区域中不匹配的碱基对进行校正；</li>
+<li>去除尾部的 polyG。对于NextSeq/NovaSeq 的测序数据，因为是两色法发光，polyG 是常有的事，所以该特性对该两类测序平台默认打开；</li>
+<li>对于PE数据中的overlap区间中不一致的碱基对，依据质量值进行校正；</li>
+<li>可以对带分子标签(UMI)的数据进行预处理，不管UMI在插入片段还是在index 上，都可以轻松处理；</li>
+<li>可以将输出进行分拆，而且支持两种模式，分别是指定分拆的个数，或者分拆后每个文件的行数。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##单端测序</span></span><br><span class="line">fastp -i in.fq -o out.fq</span><br><span class="line"><span class="comment">## 双端测序</span></span><br><span class="line">fastp -w 5 -h *.html -j *.json -i in.R1.fq -o out.R1.fq -I in.R2.fq -O out.R2.fq</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step1：建立索引，把reads-mapping到基因组上"><a href="#Step1：建立索引，把reads-mapping到基因组上" class="headerlink" title="Step1：建立索引，把reads mapping到基因组上"></a>Step1：建立索引，把reads mapping到基因组上</h3><ul>
+<li><p><strong>建索引</strong></p>
+<blockquote>
+<p><strong>1、将gff3转换为gtf</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gffread -T *.gff3 -o *.gtf</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">gffread -T /mnt/sdb/data/bioinfo/genome/SolTub_3.0/Solanum_tuberosum.SolTub_3.0.45.gff3 -o SolTub_3.0.gtf</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、提取 .exon 文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extract_exons.py *.gtf &gt;*.exon</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">python ~/soft/anaconda3/envs/RNAseq/bin/hisat2_extract_exons.py SolTub_3.0.gtf &gt; SolTub_3.0.exon</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、提取 .ss 文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extract_splice_sites.py *.gtf &gt;*.ss</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">python ~/soft/anaconda3/envs/RNAseq/bin/hisat2_extract_splice_sites.py SolTub_3.0.gtf &gt; SolTub_3.0.ss</span><br></pre></td></tr></table></figure>
+
+<p><strong>4、用以上文件建立索引</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hisat2-build -p 20 --ss *.ss --exon *.exon *.fa indexname</span><br><span class="line"><span class="comment">###fa文件为基因组文件</span></span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">hisat2-build -p 30 --ss SolTub_3.0.ss --exon SolTub_3.0.exon /mnt/sdb/data/bioinfo/genome/SolTub_3.0/SolTub_3.0.dna.toplevel.fa ../index/SolTub</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p><strong>将reads mapping到基因组上</strong></p>
+<blockquote>
+<p><strong>1、hisat2</strong><br><strong>hisat非链特异性</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -x [index] --dta-cufflinks  -p 4  -1 *.r1.fq.gz -2 *.r2.fq.gz -S output.sam</span><br></pre></td></tr></table></figure>
+
+<p><strong>链特异性</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -x [index] --dta-cufflinks --rna-strandness RF -p 4  -1 *.r1.fq.gz -2 *.r2.fq.gz -S output.sam  | tee -a *.<span class="built_in">log</span></span><br><span class="line"><span class="keyword">for</span> example</span><br><span class="line">hisat2 -x ../index/SolTub --dta-cufflinks --rna-strandness RF -p 20 -1 ../raw/AtC_0h_rep1_R1.fq.gz -2 ../raw/AtC_0h_rep1_R2.fq.gz -S AtC_0h_rep1.sam | tee log.AtC_0h_rep1.sam</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、查看比对率</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##方法1：查看log</span></span><br><span class="line"><span class="comment">##方法2：用 samtools 的 flagstat 进行统计，也能得到比对率</span></span><br><span class="line">samtools flagstat RNA.bam</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、过滤掉mapping reads 参数Q30， 有些基因序列相似度太高，mapping reads就不太准，所以过滤掉这些序列相似度过高的reads。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">samtools view</span><br><span class="line">samtools view -@ 20 -Sb -q 30 <span class="variable">$sam</span> -o <span class="variable">$bam</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4、如果是<code>paired-end</code>数据必须按照reads名称排序</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">samtools sort -@ 20 <span class="variable">$bam</span> -o <span class="variable">$sorted</span>.bam</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h3 id="Step2：转录本组装与拼接（cufflinks或者StringTie）"><a href="#Step2：转录本组装与拼接（cufflinks或者StringTie）" class="headerlink" title="Step2：转录本组装与拼接（cufflinks或者StringTie）"></a>Step2：转录本组装与拼接（cufflinks或者StringTie）</h3><ul>
+<li><strong>cufflinks</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#链特异性</span></span><br><span class="line">cufflinks  -p 4 --library-type fr-firststrand -g reference.gff -o outdir  sorted.bam </span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">cufflinks  -p 30 --library-type fr-firststrand -g /mnt/sdb/data/bioinfo/genome/SolTub_3.0/SolTub_3.0.45.gff3 -o ../cufflinks/QsC_0h_rep1 QsC_0h_rep1.sorted.bam</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>StringTie</strong><br>  <strong>StringTie 使用说明:</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">stringtie &lt;input.bam ..&gt; [-G &lt;guide_gff&gt;] [-l &lt;label&gt;] [-o &lt;out_gtf&gt;] [-p &lt;cpus&gt;]</span><br><span class="line">  [-v] [-a &lt;min_anchor_len&gt;] [-m &lt;min_tlen&gt;] [-j &lt;min_anchor_cov&gt;] [-f &lt;min_iso&gt;]</span><br><span class="line">  [-C &lt;coverage_file_name&gt;] [-c &lt;min_bundle_cov&gt;] [-g &lt;bdist&gt;] [-u]</span><br><span class="line">  [-e] [-x &lt;seqid,..&gt;] [-A &lt;gene_abund.out&gt;] [-h] &#123;-B | -b &lt;dir_path&gt;&#125;</span><br><span class="line"><span class="comment">#for example</span></span><br><span class="line"><span class="comment">### 链特异性文库</span></span><br><span class="line">stringtie --rf -p 8 -G chrX.gtf sample.sort.bam -o sample.gtf</span><br></pre></td></tr></table></figure>
+
+<p><strong>选项:</strong></p>
+<blockquote>
+<p><strong>–version : 输出软件的版本信息<br>-G 参考序列的基因注释文件 (GTF/GFF3)<br>-l 输出转录本的名称前缀 (default: STRG)<br>-f 最少转录本的比例 (default: 0.1)<br>-m 组装转录本的最小长度 (default: 200)<br>-o 组装转录本的GTF注释文件 (default: stdout)<br>-a 连接位点锚定序列的最小长度 (default: 10)<br>-j 连接位点的最小覆盖度 (default: 1)<br>-t 基于覆盖度对预测的转录本进行修正 (default: coverage trimming is enabled)<br>-c 组装转录本的reads最小覆盖度(default: 2.5)<br>-v 输出log 信息<br>-g 比对上的reads 间距大于阀值则新城一个新的转录束 (default: 50)<br>-C 输出参考转录本中被reads 覆盖到的转录本<br>-M 转录束允许多比对reads覆盖的最大占比 (default:0.95)<br>-p 线程（CPU)数 (default: 1)<br>-A 基因丰都输出文件<br>-B 在输出的GFT同目录下输出Ballgown table 文件<br>-b 在 &lt;dir_path&gt; 目录下输出Ballgown table 文件<br>-e 只对参考转录本进行丰都评估 (requires -G)<br>-x 不在参考序列区域组装任何的新转录本<br>-u 多比对校正 (default: correction enabled)<br>-h 输出软件的帮助信息</strong></p>
+</blockquote>
+<p><strong>转录本合并模式使用说明:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stringtie --merge [Options] &#123; gtf_list | strg1.gtf ...&#125;</span><br><span class="line"><span class="comment">## for example</span></span><br><span class="line">stringtie --merge -p 8 -G chrX.gtf -o stringtie_merge.gtf mergelist.txt</span><br></pre></td></tr></table></figure>
+
+<p><strong>选项</strong></p>
+<blockquote>
+<p><strong>-G &lt;guide_gff&gt;   参考转录本的注释信息 (GTF/GFF3)<br>-o &lt;out_gtf&gt;     合并转录本的GTF输出文件 (default: stdout)<br>-m &lt;min_len&gt;     合并转录本的最小长度(default: 50)<br>-c &lt;min_cov&gt;     合并转录本的最低覆盖度(default: 0)<br>-F &lt;min_fpkm&gt;    合并转录本的最小FPKM值(default: 1.0)<br>-T &lt;min_tpm&gt;     合并转录本的最小TPM值(default: 1.0)<br> -f &lt;min_iso&gt;     isoform 最小比例(default: 0.01)<br>-g &lt;gap_len&gt;     转录本见GAP长度小于阀值则合并两转录本 (default: 250)<br>-i               允许合并转录本中有内含子保留; by default<br>-l <label>       输出的转录本名称前缀 (default: MSTRG)</strong></p>
+</blockquote>
+<h3 id="Step3：计算counts数"><a href="#Step3：计算counts数" class="headerlink" title="Step3：计算counts数"></a>Step3：计算counts数</h3><p><strong>1、经过cufflinks之后每个样都会产生一个文件夹，每个文件夹里都有一个transcript.gtf, 需要在运行下一步之前将所有的transcript.gtf放到一个文件里gtflist</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls dir/*/transcripts.gtf &gt;gtflist</span><br><span class="line"><span class="comment">## for example</span></span><br><span class="line">ls cufflinks/*/transcripts.gtf &gt;gtflist</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、cuffmerge代替taco</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cuffmerge -p 20  -s <span class="variable">$genome</span> -g <span class="variable">$gtf</span> gtflist &gt;log.cuffmerge.txt</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">cuffmerge -p 20  -s /mnt/sdb/data/bioinfo/genome/SolTub_3.0/SolTub_3.0.dna.toplevel.fa -g ../process/SolTub_3.0.gtf gtflist &gt;AQ0cuffmerge.log</span><br></pre></td></tr></table></figure>
+
+<p><strong>3 计算count数</strong></p>
+<ul>
+<li><strong>3.1 htseq-count计算count数</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##链特异性</span></span><br><span class="line">htseq-count -f bam -q  -s reverse sorted.bam  assembly.gtf  &gt;output.txt 2&gt;&amp;1  &amp;</span><br><span class="line"><span class="comment">### for example </span></span><br><span class="line">htseq-count -f bam -q  -s reverse ../sam/AtC_0h_rep1.sorted.bam  merged.gtf  &gt;AtC_0h_rep1_count.txt 2&gt;&amp;1  &amp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>3.2 新拼装转录本与原基因组注释转录本比较 (可用来筛选新转录本)</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -R: 只考虑与拼装的转录本有重叠的注释转录本</span></span><br><span class="line"><span class="comment"># -r: reference gtf</span></span><br><span class="line"><span class="comment"># -o: 输出前缀</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/transcriptome/data</span><br><span class="line">gffcompare -R -r genome/GRCh38.gtf -o assembeCompare2Ref ehbio_trans.gtf</span><br><span class="line"><span class="comment"># 会输出一个assembeCompare2Ref.annotated.gtf，用于后续的定量</span></span><br><span class="line"></span><br><span class="line">统计不同种类转录本的数目</span><br><span class="line">cut -f 3 assembeCompare2Ref.ehbio_trans.gtf.tmap | tail -n +2 | sort | uniq -c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>3.3 featureCounts计算count数</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#链特异性</span></span><br><span class="line">featureCounts -T 5 -s 2 -t exon -g gene_id -a annotation.gtf -o counts.txt .bam</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">featureCounts -T 20 -s 2 -p -t exon -g gene_id -a merged.gtf -o AtC_0h_rep_count.txt ../sam/AtC_0h_rep1.sorted.bam</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##每个基因上的count数，则只需要提取出第1列和第7列的信息</span></span><br><span class="line">cut -f 1,7 *featureCounts.txt |grep -v <span class="string">'^#'</span> &gt;feacturCounts.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step4：转录组下游分析"><a href="#Step4：转录组下游分析" class="headerlink" title="Step4：转录组下游分析"></a>Step4：转录组下游分析</h3><p>。。。。。。。</p>
 
     </div>
 
@@ -297,7 +386,7 @@
   <div class="popular-posts-header">相关文章推荐</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\04\19\RNAseq分析流程\" rel="bookmark">RNAseq分析流程</a></div>
+      <div class="popular-posts-title"><a href="\2020\02\13\搭建本地blast网页-sequenceserver\" rel="bookmark">搭建本地blast网页--sequenceserver</a></div>
     </li>
   </ul>
 
@@ -325,7 +414,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://benettlee.github.io/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/" title="搭建本地blast网页--sequenceserver">https://benettlee.github.io/2020/02/13/搭建本地blast网页-sequenceserver/</a>
+    <a href="https://benettlee.github.io/2020/04/19/RNAseq%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/" title="RNAseq分析流程">https://benettlee.github.io/2020/04/19/RNAseq分析流程/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -345,12 +434,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/03/%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98nextcloud/" rel="prev" title="搭建私有云盘nextcloud">
-      <i class="fa fa-chevron-left"></i> 搭建私有云盘nextcloud
+    <a href="/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/" rel="prev" title="搭建本地blast网页--sequenceserver">
+      <i class="fa fa-chevron-left"></i> 搭建本地blast网页--sequenceserver
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/19/RNAseq%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/" rel="next" title="RNAseq分析流程">
-      RNAseq分析流程 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/01/python%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD%E5%A4%96%E6%96%87%E6%96%87%E7%8C%AE/" rel="next" title="python自动化批量下载外文文献">
+      python自动化批量下载外文文献 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -410,7 +499,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST"><span class="nav-number">1.</span> <span class="nav-text">step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step2-安装sequenceserver"><span class="nav-number">2.</span> <span class="nav-text">step2: 安装sequenceserver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step3-sequenceserver建库"><span class="nav-number">3.</span> <span class="nav-text">step3: sequenceserver建库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step4-运行sequenceserver"><span class="nav-number">4.</span> <span class="nav-text">step4: 运行sequenceserver</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#linux-常用命令"><span class="nav-number">1.</span> <span class="nav-text">linux 常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RNAseq简单分析流程"><span class="nav-number"></span> <span class="nav-text">RNAseq简单分析流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install-softwares"><span class="nav-number">1.</span> <span class="nav-text">install softwares</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#raw-data的过滤和清除不可信数据（clean-reads）"><span class="nav-number">2.</span> <span class="nav-text">raw data的过滤和清除不可信数据（clean reads）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用fastp对转录组数据做QC"><span class="nav-number">2.1.</span> <span class="nav-text">用fastp对转录组数据做QC</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1：建立索引，把reads-mapping到基因组上"><span class="nav-number">3.</span> <span class="nav-text">Step1：建立索引，把reads mapping到基因组上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2：转录本组装与拼接（cufflinks或者StringTie）"><span class="nav-number">4.</span> <span class="nav-text">Step2：转录本组装与拼接（cufflinks或者StringTie）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3：计算counts数"><span class="nav-number">5.</span> <span class="nav-text">Step3：计算counts数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step4：转录组下游分析"><span class="nav-number">6.</span> <span class="nav-text">Step4：转录组下游分析</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -882,7 +971,7 @@ translateInitilization();
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://benettlee.github.io/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://benettlee.github.io/2020/04/19/RNAseq%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/',]
       });
       });
   </script>

@@ -1,6 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>RNAseq分析流程</title>
+    <url>/2020/04/19/RNAseq%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p><strong>好记性不如烂笔头！</strong></p>
+<p>随着RNA-seq高通量测序技术的普及，使得单纯的qRTPCR数据不再满足实验需求。因此本文结合实际分析流程来简单介绍有参转录组的分析。</p>
+<a id="more"></a>
+<h3 id="linux-常用命令"><a href="#linux-常用命令" class="headerlink" title="linux 常用命令"></a>linux 常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1、将windows下编辑文件转换为linux文件，防止发生错误</span></span><br><span class="line"><span class="comment"># apt install dos2unix</span></span><br><span class="line">dos2unix merged.txt</span><br><span class="line">dos2unix: 正在转换文件 merged.txt 为Unix格式...</span><br><span class="line"><span class="comment"># 2、查看linux当前用户</span></span><br><span class="line">w</span><br><span class="line"><span class="comment"># 3、查看文件夹下的文件数目</span></span><br><span class="line">ls -l |grep <span class="string">"^-"</span>|wc -l</span><br><span class="line">或</span><br><span class="line">find ./folder_name -<span class="built_in">type</span> f | wc -l     注：folder_name 指的是：当前目录下的你要查询的文件夹名</span><br></pre></td></tr></table></figure>
+
+<h2 id="RNAseq简单分析流程"><a href="#RNAseq简单分析流程" class="headerlink" title="RNAseq简单分析流程"></a>RNAseq简单分析流程</h2><h3 id="install-softwares"><a href="#install-softwares" class="headerlink" title="install softwares"></a>install softwares</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install -c bioconda -n RNAseq samtools </span><br><span class="line">conda install -c bioconda -n RNAseq multiqc</span><br><span class="line">conda install -c bioconda -n RNAseq hisat2</span><br><span class="line">conda install -c bioconda -n RNAseq cufflinks</span><br><span class="line">conda install -c bioconda -n RNAseq taco</span><br><span class="line">conda install -c bioconda -n RNAseq HTSeq </span><br><span class="line"><span class="comment">##使用featureCounts########################</span></span><br><span class="line">conda install -c bioconda -n RNAseq subread </span><br><span class="line"><span class="comment">###########################################</span></span><br><span class="line">conda install -n RNAseq fastp</span><br><span class="line">conda install -c bioconda -n RNAseq gffcompare</span><br><span class="line">conda install -c bioconda -n RNAseq rmats rmats2sashimiplot</span><br></pre></td></tr></table></figure>
+
+<h3 id="raw-data的过滤和清除不可信数据（clean-reads）"><a href="#raw-data的过滤和清除不可信数据（clean-reads）" class="headerlink" title="raw data的过滤和清除不可信数据（clean reads）"></a>raw data的过滤和清除不可信数据（clean reads）</h3><h4 id="用fastp对转录组数据做QC"><a href="#用fastp对转录组数据做QC" class="headerlink" title="用fastp对转录组数据做QC"></a>用fastp对转录组数据做QC</h4><blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>对数据自动进行全方位质控，生成人性化的报告；</li>
+<li>过滤功能(低质量,太短,太多N……)；</li>
+<li>对每一个序列的头部或尾部，计算滑动窗内的质量均值，并将均值较低的子序列进行切除(类似 Trimmomatic 的做法,但是快非常多)；</li>
+<li>全局剪裁 (在头/尾部，不影响去重)，对于 Illumina 下机数据往往最后一到两个 cycle 需要这样处理；</li>
+<li>去除接头污染。厉害的是，你不用输入接头序列，因为算法会自动识别接头序列并进行剪裁；</li>
+<li>对于双端测序(PE)的数据，软件会自动查找每一对read的重叠区域，并对该重叠区域中不匹配的碱基对进行校正；</li>
+<li>去除尾部的 polyG。对于NextSeq/NovaSeq 的测序数据，因为是两色法发光，polyG 是常有的事，所以该特性对该两类测序平台默认打开；</li>
+<li>对于PE数据中的overlap区间中不一致的碱基对，依据质量值进行校正；</li>
+<li>可以对带分子标签(UMI)的数据进行预处理，不管UMI在插入片段还是在index 上，都可以轻松处理；</li>
+<li>可以将输出进行分拆，而且支持两种模式，分别是指定分拆的个数，或者分拆后每个文件的行数。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##单端测序</span></span><br><span class="line">fastp -i in.fq -o out.fq</span><br><span class="line"><span class="comment">## 双端测序</span></span><br><span class="line">fastp -w 5 -h *.html -j *.json -i in.R1.fq -o out.R1.fq -I in.R2.fq -O out.R2.fq</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step1：建立索引，把reads-mapping到基因组上"><a href="#Step1：建立索引，把reads-mapping到基因组上" class="headerlink" title="Step1：建立索引，把reads mapping到基因组上"></a>Step1：建立索引，把reads mapping到基因组上</h3><ul>
+<li><p><strong>建索引</strong></p>
+<blockquote>
+<p><strong>1、将gff3转换为gtf</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gffread -T *.gff3 -o *.gtf</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">gffread -T /mnt/sdb/data/bioinfo/genome/SolTub_3.0/Solanum_tuberosum.SolTub_3.0.45.gff3 -o SolTub_3.0.gtf</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、提取 .exon 文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">extract_exons.py *.gtf &gt;*.exon</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">python ~/soft/anaconda3/envs/RNAseq/bin/hisat2_extract_exons.py SolTub_3.0.gtf &gt; SolTub_3.0.exon</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、提取 .ss 文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">extract_splice_sites.py *.gtf &gt;*.ss</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">python ~/soft/anaconda3/envs/RNAseq/bin/hisat2_extract_splice_sites.py SolTub_3.0.gtf &gt; SolTub_3.0.ss</span><br></pre></td></tr></table></figure>
+
+<p><strong>4、用以上文件建立索引</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hisat2-build -p 20 --ss *.ss --exon *.exon *.fa indexname</span><br><span class="line"><span class="comment">###fa文件为基因组文件</span></span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">hisat2-build -p 30 --ss SolTub_3.0.ss --exon SolTub_3.0.exon /mnt/sdb/data/bioinfo/genome/SolTub_3.0/SolTub_3.0.dna.toplevel.fa ../index/SolTub</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p><strong>将reads mapping到基因组上</strong></p>
+<blockquote>
+<p><strong>1、hisat2</strong><br><strong>hisat非链特异性</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hisat2 -x [index] --dta-cufflinks  -p 4  -1 *.r1.fq.gz -2 *.r2.fq.gz -S output.sam</span><br></pre></td></tr></table></figure>
+
+<p><strong>链特异性</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hisat2 -x [index] --dta-cufflinks --rna-strandness RF -p 4  -1 *.r1.fq.gz -2 *.r2.fq.gz -S output.sam  | tee -a *.<span class="built_in">log</span></span><br><span class="line"><span class="keyword">for</span> example</span><br><span class="line">hisat2 -x ../index/SolTub --dta-cufflinks --rna-strandness RF -p 20 -1 ../raw/AtC_0h_rep1_R1.fq.gz -2 ../raw/AtC_0h_rep1_R2.fq.gz -S AtC_0h_rep1.sam | tee log.AtC_0h_rep1.sam</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、查看比对率</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##方法1：查看log</span></span><br><span class="line"><span class="comment">##方法2：用 samtools 的 flagstat 进行统计，也能得到比对率</span></span><br><span class="line">samtools flagstat RNA.bam</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、过滤掉mapping reads 参数Q30， 有些基因序列相似度太高，mapping reads就不太准，所以过滤掉这些序列相似度过高的reads。</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">samtools view</span><br><span class="line">samtools view -@ 20 -Sb -q 30 <span class="variable">$sam</span> -o <span class="variable">$bam</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4、如果是<code>paired-end</code>数据必须按照reads名称排序</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">samtools sort -@ 20 <span class="variable">$bam</span> -o <span class="variable">$sorted</span>.bam</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h3 id="Step2：转录本组装与拼接（cufflinks或者StringTie）"><a href="#Step2：转录本组装与拼接（cufflinks或者StringTie）" class="headerlink" title="Step2：转录本组装与拼接（cufflinks或者StringTie）"></a>Step2：转录本组装与拼接（cufflinks或者StringTie）</h3><ul>
+<li><strong>cufflinks</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#链特异性</span></span><br><span class="line">cufflinks  -p 4 --library-type fr-firststrand -g reference.gff -o outdir  sorted.bam </span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">cufflinks  -p 30 --library-type fr-firststrand -g /mnt/sdb/data/bioinfo/genome/SolTub_3.0/SolTub_3.0.45.gff3 -o ../cufflinks/QsC_0h_rep1 QsC_0h_rep1.sorted.bam</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>StringTie</strong><br>  <strong>StringTie 使用说明:</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">stringtie &lt;input.bam ..&gt; [-G &lt;guide_gff&gt;] [-l &lt;label&gt;] [-o &lt;out_gtf&gt;] [-p &lt;cpus&gt;]</span><br><span class="line">  [-v] [-a &lt;min_anchor_len&gt;] [-m &lt;min_tlen&gt;] [-j &lt;min_anchor_cov&gt;] [-f &lt;min_iso&gt;]</span><br><span class="line">  [-C &lt;coverage_file_name&gt;] [-c &lt;min_bundle_cov&gt;] [-g &lt;bdist&gt;] [-u]</span><br><span class="line">  [-e] [-x &lt;seqid,..&gt;] [-A &lt;gene_abund.out&gt;] [-h] &#123;-B | -b &lt;dir_path&gt;&#125;</span><br><span class="line"><span class="comment">#for example</span></span><br><span class="line"><span class="comment">### 链特异性文库</span></span><br><span class="line">stringtie --rf -p 8 -G chrX.gtf sample.sort.bam -o sample.gtf</span><br></pre></td></tr></table></figure>
+
+<p><strong>选项:</strong></p>
+<blockquote>
+<p><strong>–version : 输出软件的版本信息<br>-G 参考序列的基因注释文件 (GTF/GFF3)<br>-l 输出转录本的名称前缀 (default: STRG)<br>-f 最少转录本的比例 (default: 0.1)<br>-m 组装转录本的最小长度 (default: 200)<br>-o 组装转录本的GTF注释文件 (default: stdout)<br>-a 连接位点锚定序列的最小长度 (default: 10)<br>-j 连接位点的最小覆盖度 (default: 1)<br>-t 基于覆盖度对预测的转录本进行修正 (default: coverage trimming is enabled)<br>-c 组装转录本的reads最小覆盖度(default: 2.5)<br>-v 输出log 信息<br>-g 比对上的reads 间距大于阀值则新城一个新的转录束 (default: 50)<br>-C 输出参考转录本中被reads 覆盖到的转录本<br>-M 转录束允许多比对reads覆盖的最大占比 (default:0.95)<br>-p 线程（CPU)数 (default: 1)<br>-A 基因丰都输出文件<br>-B 在输出的GFT同目录下输出Ballgown table 文件<br>-b 在 &lt;dir_path&gt; 目录下输出Ballgown table 文件<br>-e 只对参考转录本进行丰都评估 (requires -G)<br>-x 不在参考序列区域组装任何的新转录本<br>-u 多比对校正 (default: correction enabled)<br>-h 输出软件的帮助信息</strong></p>
+</blockquote>
+<p><strong>转录本合并模式使用说明:</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">stringtie --merge [Options] &#123; gtf_list | strg1.gtf ...&#125;</span><br><span class="line"><span class="comment">## for example</span></span><br><span class="line">stringtie --merge -p 8 -G chrX.gtf -o stringtie_merge.gtf mergelist.txt</span><br></pre></td></tr></table></figure>
+
+<p><strong>选项</strong></p>
+<blockquote>
+<p><strong>-G &lt;guide_gff&gt;   参考转录本的注释信息 (GTF/GFF3)<br>-o &lt;out_gtf&gt;     合并转录本的GTF输出文件 (default: stdout)<br>-m &lt;min_len&gt;     合并转录本的最小长度(default: 50)<br>-c &lt;min_cov&gt;     合并转录本的最低覆盖度(default: 0)<br>-F &lt;min_fpkm&gt;    合并转录本的最小FPKM值(default: 1.0)<br>-T &lt;min_tpm&gt;     合并转录本的最小TPM值(default: 1.0)<br> -f &lt;min_iso&gt;     isoform 最小比例(default: 0.01)<br>-g &lt;gap_len&gt;     转录本见GAP长度小于阀值则合并两转录本 (default: 250)<br>-i               允许合并转录本中有内含子保留; by default<br>-l <label>       输出的转录本名称前缀 (default: MSTRG)</strong></p>
+</blockquote>
+<h3 id="Step3：计算counts数"><a href="#Step3：计算counts数" class="headerlink" title="Step3：计算counts数"></a>Step3：计算counts数</h3><p><strong>1、经过cufflinks之后每个样都会产生一个文件夹，每个文件夹里都有一个transcript.gtf, 需要在运行下一步之前将所有的transcript.gtf放到一个文件里gtflist</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls dir/*/transcripts.gtf &gt;gtflist</span><br><span class="line"><span class="comment">## for example</span></span><br><span class="line">ls cufflinks/*/transcripts.gtf &gt;gtflist</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、cuffmerge代替taco</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cuffmerge -p 20  -s <span class="variable">$genome</span> -g <span class="variable">$gtf</span> gtflist &gt;log.cuffmerge.txt</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">cuffmerge -p 20  -s /mnt/sdb/data/bioinfo/genome/SolTub_3.0/SolTub_3.0.dna.toplevel.fa -g ../process/SolTub_3.0.gtf gtflist &gt;AQ0cuffmerge.log</span><br></pre></td></tr></table></figure>
+
+<p><strong>3 计算count数</strong></p>
+<ul>
+<li><strong>3.1 htseq-count计算count数</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##链特异性</span></span><br><span class="line">htseq-count -f bam -q  -s reverse sorted.bam  assembly.gtf  &gt;output.txt 2&gt;&amp;1  &amp;</span><br><span class="line"><span class="comment">### for example </span></span><br><span class="line">htseq-count -f bam -q  -s reverse ../sam/AtC_0h_rep1.sorted.bam  merged.gtf  &gt;AtC_0h_rep1_count.txt 2&gt;&amp;1  &amp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>3.2 新拼装转录本与原基因组注释转录本比较 (可用来筛选新转录本)</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -R: 只考虑与拼装的转录本有重叠的注释转录本</span></span><br><span class="line"><span class="comment"># -r: reference gtf</span></span><br><span class="line"><span class="comment"># -o: 输出前缀</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/transcriptome/data</span><br><span class="line">gffcompare -R -r genome/GRCh38.gtf -o assembeCompare2Ref ehbio_trans.gtf</span><br><span class="line"><span class="comment"># 会输出一个assembeCompare2Ref.annotated.gtf，用于后续的定量</span></span><br><span class="line"></span><br><span class="line">统计不同种类转录本的数目</span><br><span class="line">cut -f 3 assembeCompare2Ref.ehbio_trans.gtf.tmap | tail -n +2 | sort | uniq -c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>3.3 featureCounts计算count数</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#链特异性</span></span><br><span class="line">featureCounts -T 5 -s 2 -t exon -g gene_id -a annotation.gtf -o counts.txt .bam</span><br><span class="line"><span class="comment">##for example</span></span><br><span class="line">featureCounts -T 20 -s 2 -p -t exon -g gene_id -a merged.gtf -o AtC_0h_rep_count.txt ../sam/AtC_0h_rep1.sorted.bam</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##每个基因上的count数，则只需要提取出第1列和第7列的信息</span></span><br><span class="line">cut -f 1,7 *featureCounts.txt |grep -v <span class="string">'^#'</span> &gt;feacturCounts.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step4：转录组下游分析"><a href="#Step4：转录组下游分析" class="headerlink" title="Step4：转录组下游分析"></a>Step4：转录组下游分析</h3><p>。。。。。。。</p>
+]]></content>
+      <categories>
+        <category>bioinfo</category>
+      </categories>
+      <tags>
+        <tag>bioinfo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Terminal界面基本操作</title>
     <url>/2019/11/11/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h2 id="Terminal界面基本操作"><a href="#Terminal界面基本操作" class="headerlink" title="Terminal界面基本操作"></a>Terminal界面基本操作</h2><a id="more"></a>
@@ -44,6 +160,40 @@
       </tags>
   </entry>
   <entry>
+    <title>python自动化批量下载外文文献</title>
+    <url>/2020/05/01/python%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD%E5%A4%96%E6%96%87%E6%96%87%E7%8C%AE/</url>
+    <content><![CDATA[<h2 id="Part-1：-学习别人造好的轮子记录笔记"><a href="#Part-1：-学习别人造好的轮子记录笔记" class="headerlink" title="Part 1： 学习别人造好的轮子记录笔记"></a>Part 1： 学习别人造好的轮子记录笔记</h2><p>######</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -U scidownl</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scidownl -h</span><br></pre></td></tr></table></figure>
+
+<h3 id="举例子"><a href="#举例子" class="headerlink" title="举例子"></a>举例子</h3><p><strong>Update available links of Scihub</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scidownl -u</span><br></pre></td></tr></table></figure>
+
+<p><strong>Choose scihub url by the index.</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scidownl -c <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>List available links of Scihub. You can see the current scihub url is pointing to the 5th scihub url.</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scidownl -l</span><br></pre></td></tr></table></figure>
+
+<p><strong>Download to the current directory</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scidownl -D <span class="number">10.1021</span>/ol9910114 -o .</span><br></pre></td></tr></table></figure>
+
+<p><strong>Download to the specified directory, ie. ‘-o paper’ for downloading to paper directory.</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scidownl -D <span class="number">10.1021</span>/ol9910114 -o paper</span><br></pre></td></tr></table></figure>
+
+<h3 id="批量化"><a href="#批量化" class="headerlink" title="批量化"></a>批量化</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> scidownl.scihub <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">DOIs = [<span class="string">"10.1038/s41438-020-0303-7"</span>, <span class="string">"10.1038/s41438-020-0298-0"</span>, <span class="string">"10.3389/fgene.2020.00460"</span>]</span><br><span class="line">out = <span class="string">'./paper'</span></span><br><span class="line"><span class="keyword">for</span> doi <span class="keyword">in</span> DOIs:</span><br><span class="line">  SciHub(doi, out).download(choose_scihub_url_index=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-2：-通过微信发消息来自动化获取文献"><a href="#Part-2：-通过微信发消息来自动化获取文献" class="headerlink" title="Part 2： 通过微信发消息来自动化获取文献"></a>Part 2： 通过微信发消息来自动化获取文献</h2><p><strong>参考<code>wechat-down-sci.py</code>以下代码：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> itchat</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> itchat.content <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> scidownl.scihub <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path = <span class="string">'./paper'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delfile</span><span class="params">(path)</span>:</span></span><br><span class="line">    <span class="comment">#   read all the files under the folder</span></span><br><span class="line">    fileNames = glob.glob(path + <span class="string">r'\*'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> fileNames:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment">#           delete file</span></span><br><span class="line">            os.remove(fileName)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># delete empty folders</span></span><br><span class="line">                os.rmdir(fileName)</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="comment"># Not empty, delete files under folders</span></span><br><span class="line">                delfile(fileName)</span><br><span class="line">                <span class="comment"># now, folders are empty, delete it</span></span><br><span class="line">                os.rmdir(fileName)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">delfile(path)</span><br><span class="line"></span><br><span class="line"><span class="meta">@itchat.msg_register(itchat.content.TEXT)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text_reply</span><span class="params">(msg)</span>:</span></span><br><span class="line">    message = msg[<span class="string">'Text'</span>]</span><br><span class="line">    mark = <span class="string">'10.'</span></span><br><span class="line">    <span class="keyword">if</span> message.startswith(mark) == <span class="literal">True</span>:</span><br><span class="line">        DOI = message</span><br><span class="line">        out = <span class="string">'paper'</span></span><br><span class="line">        sci = SciHub(DOI, out).download(choose_scihub_url_index=<span class="number">3</span>)</span><br><span class="line">        file_dir = <span class="string">'./paper'</span></span><br><span class="line">        os.listdir(file_dir)</span><br><span class="line">        new_workbook = xlwt.Workbook()</span><br><span class="line">        worksheet = new_workbook.add_sheet(<span class="string">'Sheet1'</span>)</span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> os.listdir(file_dir):</span><br><span class="line">            worksheet.write(n, <span class="number">0</span>, i)</span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line">        new_workbook.save(<span class="string">'filename.xls'</span>)</span><br><span class="line">        xlsx = xlrd.open_workbook(<span class="string">'filename.xls'</span>)</span><br><span class="line">        table = xlsx.sheet_by_index(<span class="number">0</span>)</span><br><span class="line">        content = str(table.cell_value(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        files = os.listdir(file_dir)</span><br><span class="line">        <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> content <span class="keyword">in</span> f:</span><br><span class="line">                old_file = os.path.join(file_dir, f)</span><br><span class="line">                new_file = os.path.join(file_dir, <span class="string">'reference.pdf'</span>)</span><br><span class="line">                os.rename(old_file, new_file)</span><br><span class="line">        file_pdf = <span class="string">'./paper/reference.pdf'</span></span><br><span class="line">        <span class="comment"># print(file_pdf)</span></span><br><span class="line">        itchat.send_file(file_pdf, msg[<span class="string">'FromUserName'</span>])</span><br><span class="line">        path = <span class="string">'./paper'</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">delfile</span><span class="params">(path)</span>:</span></span><br><span class="line">            <span class="comment">#   read all the files under the folder</span></span><br><span class="line">            fileNames = glob.glob(path + <span class="string">r'\*'</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> fileName <span class="keyword">in</span> fileNames:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="comment">#           delete file</span></span><br><span class="line">                    os.remove(fileName)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">try</span>:</span><br><span class="line">                        <span class="comment"># delete empty folders</span></span><br><span class="line">                        os.rmdir(fileName)</span><br><span class="line">                    <span class="keyword">except</span>:</span><br><span class="line">                        <span class="comment"># Not empty, delete files under folders</span></span><br><span class="line">                        delfile(fileName)</span><br><span class="line">                        <span class="comment"># now, folders are empty, delete it</span></span><br><span class="line">                        os.rmdir(fileName)</span><br><span class="line"></span><br><span class="line">        delfile(path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">itchat.auto_login(enableCmdQR=<span class="literal">True</span>, hotReload=<span class="literal">True</span>)</span><br><span class="line">itchat.run()</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>搭建本地blast网页--sequenceserver</title>
     <url>/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/</url>
     <content><![CDATA[<p><strong>目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。</strong></p>
@@ -64,10 +214,10 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>skill</category>
+        <category>bioinfo</category>
       </categories>
       <tags>
-        <tag>skill</tag>
+        <tag>bioinfo</tag>
       </tags>
   </entry>
   <entry>
