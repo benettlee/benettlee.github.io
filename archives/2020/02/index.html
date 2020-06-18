@@ -23,20 +23,17 @@
     var CONFIG = {"hostname":"benettlee.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="搭建本地blast网页--sequenceserver">
-<meta property="og:url" content="https://benettlee.github.io/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/index.html">
+  <meta name="description" content="一定要做最适合自己的事情，不要迎合别人的口味而去做一件不属于自我的“难事”。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BenettLee Blog">
+<meta property="og:url" content="https://benettlee.github.io/archives/2020/02/index.html">
 <meta property="og:site_name" content="BenettLee Blog">
-<meta property="og:description" content="目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。">
+<meta property="og:description" content="一定要做最适合自己的事情，不要迎合别人的口味而去做一件不属于自我的“难事”。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-21T01:06:55.000Z">
-<meta property="article:modified_time" content="2020-06-04T13:32:30.859Z">
 <meta property="article:author" content="李鹏程">
-<meta property="article:tag" content="skill">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://benettlee.github.io/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/">
+<link rel="canonical" href="https://benettlee.github.io/archives/2020/02/">
 
 
 <script id="page-configurations">
@@ -44,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>搭建本地blast网页--sequenceserver | BenettLee Blog</title>
+  <title>归档 | BenettLee Blog</title>
   
 
 
@@ -197,167 +194,50 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://benettlee.github.io/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/tx.jpg">
-      <meta itemprop="name" content="李鹏程">
-      <meta itemprop="description" content="一定要做最适合自己的事情，不要迎合别人的口味而去做一件不属于自我的“难事”。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BenettLee Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          搭建本地blast网页--sequenceserver
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-21 01:06:55" itemprop="dateCreated datePublished" datetime="2020-04-21T01:06:55Z">2020-04-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-04 13:32:30" itemprop="dateModified" datetime="2020-06-04T13:32:30Z">2020-06-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/skill/" itemprop="url" rel="index"><span itemprop="name">skill</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>738</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p><strong>目前sequenceserver在搭建本地blast中更受欢迎。使用sequenceserver部署本地化blast网页服务，界面简单易用，还可以同时勾选多个数据库进行比对分析。以下教程使用sequenceserver在ubuntu上搭建。</strong></p>
-<a id="more"></a>
-
-<h2 id="step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST"><a href="#step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST" class="headerlink" title="step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+"></a>step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ruby          </span><br><span class="line">sudo apt-get install gem           </span><br><span class="line">sudo apt-get install ruby-dev      </span><br><span class="line">sudo apt-get install ncbi-blast+</span><br></pre></td></tr></table></figure>
-
-<h2 id="step2-安装sequenceserver"><a href="#step2-安装sequenceserver" class="headerlink" title="step2: 安装sequenceserver"></a>step2: 安装sequenceserver</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install sequenceserver</span><br></pre></td></tr></table></figure>
-
-<h2 id="step3-sequenceserver建库"><a href="#step3-sequenceserver建库" class="headerlink" title="step3: sequenceserver建库"></a>step3: sequenceserver建库</h2><p>创建一个db(包含nucleotide和protein)数据库，并使用<code>makeblastbd</code>对其建立索引。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo makeblastdb -in `nucleotide`.fa -dbtype nucl -out `nucleotide`  ##核酸</span><br><span class="line">sudo makeblastdb -in `protein`.fa -dbtype prot -out `protein`  ##蛋白</span><br></pre></td></tr></table></figure>
-<h2 id="step4-运行sequenceserver"><a href="#step4-运行sequenceserver" class="headerlink" title="step4: 运行sequenceserver"></a>step4: 运行sequenceserver</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sequenceserver -d /opt/sequenceserver/db/ -n 16 -p 4567</span><br></pre></td></tr></table></figure>
-
-<p>程序运行后，在浏览器中打开 localhost:4567 即可访问本地化blast网页服务。</p>
-<p>常用参数：</p>
-<blockquote>
-<p>-b | –bin<br>    输入ncbi-blast+的bin文件路径<br>-d | –database_dir<br>    输入blast数据库路径<br>-n | –num_threads<br>    设置使用的CPU线程数<br>-p | –port<br>    设置使用的端口号，默认为4567</p>
-</blockquote>
-
-    </div>
-
-    
-    
-    
-      
-  <div class="popular-posts-header">相关文章推荐</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\04\09\搭建私有云盘nextcloud\" rel="bookmark">搭建私有云盘nextcloud</a></div>
-    </li>
-  </ul>
-
-        <div class="reward-container">
-  <div>觉得文章对您有帮助请我喝杯奶茶吧😉</div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/wc.png" alt="李鹏程 微信支付">
-        <p>微信支付</p>
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共计 4 篇日志。 继续努力。</span>
       </div>
 
-  </div>
-</div>
-
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>李鹏程
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://benettlee.github.io/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/" title="搭建本地blast网页--sequenceserver">https://benettlee.github.io/2020/04/21/搭建本地blast网页-sequenceserver/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/skill/" rel="tag"><i class="fa fa-tag"></i> skill</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/04/09/%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98nextcloud/" rel="prev" title="搭建私有云盘nextcloud">
-      <i class="fa fa-chevron-left"></i> 搭建私有云盘nextcloud
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/06/hello-world/" rel="next" title="Hello World">
-      Hello World <i class="fa fa-chevron-right"></i>
-    </a></div>
+      
+    <div class="collection-year">
+      <span class="collection-header">2020</span>
     </div>
-      </footer>
-    
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2020-02-13T11:06:55Z"
+              content="2020-02-13">
+          02-13
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/" itemprop="url">
+            <span itemprop="name">搭建本地blast网页--sequenceserver</span>
+          </a>
+      </div>
+
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -410,7 +290,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#step1-1-安装需要Ruby、-RubyGems、-NCBI-BLAST"><span class="nav-number">1.</span> <span class="nav-text">step1: 1 安装需要Ruby、 RubyGems、 NCBI BLAST+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step2-安装sequenceserver"><span class="nav-number">2.</span> <span class="nav-text">step2: 安装sequenceserver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step3-sequenceserver建库"><span class="nav-number">3.</span> <span class="nav-text">step3: sequenceserver建库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step4-运行sequenceserver"><span class="nav-number">4.</span> <span class="nav-text">step4: 运行sequenceserver</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -471,11 +350,7 @@
         
         
           <li>
-            <a href="/2020/06/06/hello-world/" title="Hello World" target="_blank">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/" title="搭建本地blast网页--sequenceserver" target="_blank">搭建本地blast网页--sequenceserver</a>
+            <a href="/2020/11/11/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="Terminal界面基本操作" target="_blank">Terminal界面基本操作</a>
           </li>
         
           <li>
@@ -483,7 +358,11 @@
           </li>
         
           <li>
-            <a href="/2020/04/09/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="Terminal界面基本操作" target="_blank">Terminal界面基本操作</a>
+            <a href="/2020/02/13/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/" title="搭建本地blast网页--sequenceserver" target="_blank">搭建本地blast网页--sequenceserver</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/08/hello-world/" title="Hello World" target="_blank">Hello World</a>
           </li>
         
       </ul>
@@ -878,7 +757,7 @@ translateInitilization();
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://benettlee.github.io/2020/04/21/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0blast%E7%BD%91%E9%A1%B5-sequenceserver/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://benettlee.github.io/archives/2020/02/',]
       });
       });
   </script>
