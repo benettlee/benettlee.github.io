@@ -138,6 +138,84 @@
 <li>查看命令使用说明：command –help</li>
 </ul>
 <hr>
+<div id="echarts6388" style="width: 85%;height: 400px;margin: 0 auto"></div>
++ <script src="https://echarts.baidu.com/dist/echarts.common.min.js"></script>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echarts6388'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title: {
+        text: "某站点用户访问来源",
+        subtext: "ECharts示例",
+        x: "center"
+    },
+    tooltip: {
+        trigger: "item",
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: "vertical",
+        x: "left",
+        data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {
+                show: true
+            },
+            dataView: {
+                show: true,
+                readOnly: true
+            },
+            restore: {
+                show: true
+            },
+            saveAsImage: {
+                show: true
+            }
+        }
+    },
+    calculable: true,
+    series: [
+        {
+            name: "访问来源",
+            type: "pie",
+            radius: "55%",
+            center: ["50%", "60%"],
+            data: [
+                {
+                    value: 335,
+                    name: "直接访问"
+                },
+                {
+                    value: 310,
+                    name: "邮件营销"
+                },
+                {
+                    value: 234,
+                    name: "联盟广告"
+                },
+                {
+                    value: 135,
+                    name: "视频广告"
+                },
+                {
+                    value: 1548,
+                    name: "搜索引擎"
+                }
+            ]
+        }
+    ]
+}
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+</script>
+
+
 <h2 id="Terminal常用工具"><a href="#Terminal常用工具" class="headerlink" title="Terminal常用工具"></a>Terminal常用工具</h2><ul>
 <li>shell语言：bash</li>
 <li>文本阅读工具：vim</li>
