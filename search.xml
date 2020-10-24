@@ -224,11 +224,11 @@
 <li>查看命令使用说明：command –help</li>
 </ul>
 <hr>
-<div id="echarts1860" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts2224" style="width: 85%;height: 400px;margin: 0 auto"></div>
 + <script src="https://echarts.baidu.com/dist/echarts.common.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1860'));
+        var myChart = echarts.init(document.getElementById('echarts2224'));
 
         // 指定图表的配置项和数据
         var option = {
