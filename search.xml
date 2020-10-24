@@ -118,6 +118,92 @@
       </tags>
   </entry>
   <entry>
+    <title>TDengine安装及简单使用</title>
+    <url>/2020/10/25/TDengine%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><p>已安装dock的Linux服务器</p>
+<p>本教程使用的Liunx服务器是Ubuntu 18.04 </p>
+<a id="more"></a>
+
+<h3 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h3><p><a href="https://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener external nofollow noreferrer">参考链接</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用官方安装脚本自动安装</span></span><br><span class="line">sudo curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure>
+
+<p>如果要使用 Docker 作为非 root 用户，则应考虑使用类似以下方式将用户添加到 docker 组：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker 'username'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 根据实际改为自己的username</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、安装TDengine服务器端"><a href="#2、安装TDengine服务器端" class="headerlink" title="2、安装TDengine服务器端"></a>2、安装TDengine服务器端</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装TDengine2.0.5.1镜像的标签</span></span><br><span class="line">docker run -d -v --name=xhc_tdengine /etc/taos:/etc/taos --network=host tdengine/tdengine:2.0.5.1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务器端进入xhc_tdengine的docker容器</span></span><br><span class="line">docker exec -it xhc_tdengine /bin/bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Tdenginen 体验，看是否安装正确</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taos</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>TDengine终端连接服务成功，将会打印出欢迎消息和版本信息。如果失败，则会打印错误消息出来。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">taos&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在TDengine终端中，用户可以通过SQL命令来创建/删除数据库、表等，并进行插入查询操作。在终端中运行的SQL语句需要以分号结束来运行。示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  create database db;</span><br><span class="line">  use db;</span><br><span class="line">  create table t (ts timestamp, cdata int);</span><br><span class="line">  insert into t values (&#39;2019-07-15 00:00:00&#39;, 10);</span><br><span class="line">  insert into t values (&#39;2019-07-15 01:00:00&#39;, 20);</span><br><span class="line">  select * from t;</span><br><span class="line">  </span><br><span class="line">            ts          |   speed   |</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line"> 19-07-15 00:00:00.000|         10|</span><br><span class="line"> 19-07-15 01:00:00.000|         20|</span><br><span class="line">Query OK, 2 row(s) in set (0.001700s)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>除执行SQL语句外，系统管理员还可以从TDengine终端检查系统运行状态，添加删除用户账号等。</p>
+</li>
+<li><ul>
+<li><p>命令行参数</p>
+<p>您可通过配置命令行参数来改变TDengine终端的行为。以下为常用的几个命令行参数：</p>
+<p>-c, –config-dir: 指定配置文件目录，默认为/etc/taos<br>-h, –host: 指定服务的FQDN，默认为本地服务<br>-s, –commands: 在不进入终端的情况下运行TDengine命令<br>-u, – user: 连接TDengine服务器的用户名，缺省为root<br>-p, –password: 连接TDengine服务器的密码，缺省为taosdata<br>-?, –help: 打印出所有命令行参数</p>
+</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taos -h 192.168.0.1 -s "use db; show tables;"</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>运行SQL命令脚本<br>TDengine终端可以通过source命令来运行SQL命令脚本.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">taos&gt;</span><span class="bash"> <span class="built_in">source</span> &lt;filename&gt;;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Shell小技巧</p>
+<ul>
+<li>可以使用上下光标键查看已经历史输入的命令</li>
+<li>修改用户密码。在shell中使用alter user命令</li>
+<li>ctrl+c 中止正在进行中的查询</li>
+<li>执行RESET QUERY CACHE清空本地缓存的表的schema</li>
+</ul>
+</blockquote>
+</li>
+<li><p>注意：如果从不同于taosd运行的机器运行taos, 请注意该机器的DNS或hosts文件的配置，该机器需要能正确解析服务器的hostname, 否则taos无法正常工作。</p>
+</li>
+</ul>
+<h2 id="3、windows安装TDengine客户端，以方便连接服务器端"><a href="#3、windows安装TDengine客户端，以方便连接服务器端" class="headerlink" title="3、windows安装TDengine客户端，以方便连接服务器端"></a>3、windows安装TDengine客户端，以方便连接服务器端</h2><ul>
+<li><p>下载TDengine-client-2.0.5.1-Windows-x64.exe客户端软件，<a href="https://www.taosdata.com/cn/all-downloads/" target="_blank" rel="noopener external nofollow noreferrer">下载地址</a></p>
+</li>
+<li><p>默认安装即可；</p>
+</li>
+<li><p><code>CTRL</code>  +  <code>R</code> 输入”cmd”，进入windows命令行模式</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"># 进入TDengine目录</span><br><span class="line"><span class="built_in">cd</span> \TDengine</span><br><span class="line"># 远程连接服务器端</span><br><span class="line">taos -h 服务器端ip地址</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="4、通过IDEA-Database管理工具连接TDengine"><a href="#4、通过IDEA-Database管理工具连接TDengine" class="headerlink" title="4、通过IDEA Database管理工具连接TDengine"></a>4、通过IDEA Database管理工具连接TDengine</h2><p>参考链接：<a href="https://www.taosdata.com/blog/2020/08/27/1767.html" target="_blank" rel="noopener external nofollow noreferrer">如何借助 IDEA 数据库管理工具可视化使用 TDengine？</a></p>
+]]></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>TDengine</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Terminal界面基本操作</title>
     <url>/2019/11/11/Terminal%E7%95%8C%E9%9D%A2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h2 id="Terminal界面基本操作"><a href="#Terminal界面基本操作" class="headerlink" title="Terminal界面基本操作"></a>Terminal界面基本操作</h2><a id="more"></a>
@@ -138,11 +224,11 @@
 <li>查看命令使用说明：command –help</li>
 </ul>
 <hr>
-<div id="echarts6865" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<div id="echarts1860" style="width: 85%;height: 400px;margin: 0 auto"></div>
 + <script src="https://echarts.baidu.com/dist/echarts.common.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts6865'));
+        var myChart = echarts.init(document.getElementById('echarts1860'));
 
         // 指定图表的配置项和数据
         var option = {

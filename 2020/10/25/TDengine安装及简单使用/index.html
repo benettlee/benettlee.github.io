@@ -23,17 +23,20 @@
     var CONFIG = {"hostname":"benettlee.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一定要做最适合自己的事情，不要迎合别人的口味而去做一件不属于自我的“难事”。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BenettLee Blog">
-<meta property="og:url" content="https://benettlee.github.io/archives/2020/05/index.html">
+  <meta name="description" content="1、环境准备已安装dock的Linux服务器 本教程使用的Liunx服务器是Ubuntu 18.04">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TDengine安装及简单使用">
+<meta property="og:url" content="https://benettlee.github.io/2020/10/25/TDengine%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="BenettLee Blog">
-<meta property="og:description" content="一定要做最适合自己的事情，不要迎合别人的口味而去做一件不属于自我的“难事”。">
+<meta property="og:description" content="1、环境准备已安装dock的Linux服务器 本教程使用的Liunx服务器是Ubuntu 18.04">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-25T00:25:36.000Z">
+<meta property="article:modified_time" content="2020-10-24T16:29:08.384Z">
 <meta property="article:author" content="李鹏程">
+<meta property="article:tag" content="TDengine">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://benettlee.github.io/archives/2020/05/">
+<link rel="canonical" href="https://benettlee.github.io/2020/10/25/TDengine%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -41,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | BenettLee Blog</title>
+  <title>TDengine安装及简单使用 | BenettLee Blog</title>
   
 
 
@@ -200,50 +203,217 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 7 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://benettlee.github.io/2020/10/25/TDengine%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tx.jpg">
+      <meta itemprop="name" content="李鹏程">
+      <meta itemprop="description" content="一定要做最适合自己的事情，不要迎合别人的口味而去做一件不属于自我的“难事”。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BenettLee Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TDengine安装及简单使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-25 00:25:36" itemprop="dateCreated datePublished" datetime="2020-10-25T00:25:36Z">2020-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 16:29:08" itemprop="dateModified" datetime="2020-10-24T16:29:08Z">2020-10-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><p>已安装dock的Linux服务器</p>
+<p>本教程使用的Liunx服务器是Ubuntu 18.04 </p>
+<a id="more"></a>
+
+<h3 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h3><p><a href="https://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener external nofollow noreferrer">参考链接</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用官方安装脚本自动安装</span></span><br><span class="line">sudo curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure>
+
+<p>如果要使用 Docker 作为非 root 用户，则应考虑使用类似以下方式将用户添加到 docker 组：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker 'username'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 根据实际改为自己的username</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、安装TDengine服务器端"><a href="#2、安装TDengine服务器端" class="headerlink" title="2、安装TDengine服务器端"></a>2、安装TDengine服务器端</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装TDengine2.0.5.1镜像的标签</span></span><br><span class="line">docker run -d -v --name=xhc_tdengine /etc/taos:/etc/taos --network=host tdengine/tdengine:2.0.5.1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 服务器端进入xhc_tdengine的docker容器</span></span><br><span class="line">docker exec -it xhc_tdengine /bin/bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Tdenginen 体验，看是否安装正确</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taos</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>TDengine终端连接服务成功，将会打印出欢迎消息和版本信息。如果失败，则会打印错误消息出来。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">taos&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在TDengine终端中，用户可以通过SQL命令来创建/删除数据库、表等，并进行插入查询操作。在终端中运行的SQL语句需要以分号结束来运行。示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  create database db;</span><br><span class="line">  use db;</span><br><span class="line">  create table t (ts timestamp, cdata int);</span><br><span class="line">  insert into t values (&#39;2019-07-15 00:00:00&#39;, 10);</span><br><span class="line">  insert into t values (&#39;2019-07-15 01:00:00&#39;, 20);</span><br><span class="line">  select * from t;</span><br><span class="line">  </span><br><span class="line">            ts          |   speed   |</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line"> 19-07-15 00:00:00.000|         10|</span><br><span class="line"> 19-07-15 01:00:00.000|         20|</span><br><span class="line">Query OK, 2 row(s) in set (0.001700s)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>除执行SQL语句外，系统管理员还可以从TDengine终端检查系统运行状态，添加删除用户账号等。</p>
+</li>
+<li><ul>
+<li><p>命令行参数</p>
+<p>您可通过配置命令行参数来改变TDengine终端的行为。以下为常用的几个命令行参数：</p>
+<p>-c, –config-dir: 指定配置文件目录，默认为/etc/taos<br>-h, –host: 指定服务的FQDN，默认为本地服务<br>-s, –commands: 在不进入终端的情况下运行TDengine命令<br>-u, – user: 连接TDengine服务器的用户名，缺省为root<br>-p, –password: 连接TDengine服务器的密码，缺省为taosdata<br>-?, –help: 打印出所有命令行参数</p>
+</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taos -h 192.168.0.1 -s "use db; show tables;"</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>运行SQL命令脚本<br>TDengine终端可以通过source命令来运行SQL命令脚本.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">taos&gt;</span><span class="bash"> <span class="built_in">source</span> &lt;filename&gt;;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Shell小技巧</p>
+<ul>
+<li>可以使用上下光标键查看已经历史输入的命令</li>
+<li>修改用户密码。在shell中使用alter user命令</li>
+<li>ctrl+c 中止正在进行中的查询</li>
+<li>执行RESET QUERY CACHE清空本地缓存的表的schema</li>
+</ul>
+</blockquote>
+</li>
+<li><p>注意：如果从不同于taosd运行的机器运行taos, 请注意该机器的DNS或hosts文件的配置，该机器需要能正确解析服务器的hostname, 否则taos无法正常工作。</p>
+</li>
+</ul>
+<h2 id="3、windows安装TDengine客户端，以方便连接服务器端"><a href="#3、windows安装TDengine客户端，以方便连接服务器端" class="headerlink" title="3、windows安装TDengine客户端，以方便连接服务器端"></a>3、windows安装TDengine客户端，以方便连接服务器端</h2><ul>
+<li><p>下载TDengine-client-2.0.5.1-Windows-x64.exe客户端软件，<a href="https://www.taosdata.com/cn/all-downloads/" target="_blank" rel="noopener external nofollow noreferrer">下载地址</a></p>
+</li>
+<li><p>默认安装即可；</p>
+</li>
+<li><p><code>CTRL</code>  +  <code>R</code> 输入”cmd”，进入windows命令行模式</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 进入TDengine目录</span><br><span class="line"><span class="built_in">cd</span> \TDengine</span><br><span class="line"># 远程连接服务器端</span><br><span class="line">taos -h 服务器端ip地址</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="4、通过IDEA-Database管理工具连接TDengine"><a href="#4、通过IDEA-Database管理工具连接TDengine" class="headerlink" title="4、通过IDEA Database管理工具连接TDengine"></a>4、通过IDEA Database管理工具连接TDengine</h2><p>参考链接：<a href="https://www.taosdata.com/blog/2020/08/27/1767.html" target="_blank" rel="noopener external nofollow noreferrer">如何借助 IDEA 数据库管理工具可视化使用 TDengine？</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+      
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-01T13:09:04Z"
-              content="2020-05-01">
-          05-01
-        </time>
+        <div class="reward-container">
+  <div>觉得文章对您有帮助请我喝杯奶茶吧😉</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wc.png" alt="李鹏程 微信支付">
+        <p>微信支付</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/05/01/python%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD%E5%A4%96%E6%96%87%E6%96%87%E7%8C%AE/" itemprop="url">
-            <span itemprop="name">python自动化批量下载外文文献</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>李鹏程
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://benettlee.github.io/2020/10/25/TDengine%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" title="TDengine安装及简单使用">https://benettlee.github.io/2020/10/25/TDengine安装及简单使用/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TDengine/" rel="tag"><i class="fa fa-tag"></i> TDengine</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/01/python%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD%E5%A4%96%E6%96%87%E6%96%87%E7%8C%AE/" rel="prev" title="python自动化批量下载外文文献">
+      <i class="fa fa-chevron-left"></i> python自动化批量下载外文文献
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -296,6 +466,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、环境准备"><span class="nav-number">1.</span> <span class="nav-text">1、环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker安装"><span class="nav-number">1.1.</span> <span class="nav-text">docker安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、安装TDengine服务器端"><span class="nav-number">2.</span> <span class="nav-text">2、安装TDengine服务器端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、windows安装TDengine客户端，以方便连接服务器端"><span class="nav-number">3.</span> <span class="nav-text">3、windows安装TDengine客户端，以方便连接服务器端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、通过IDEA-Database管理工具连接TDengine"><span class="nav-number">4.</span> <span class="nav-text">4、通过IDEA Database管理工具连接TDengine</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -767,7 +938,7 @@ translateInitilization();
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://benettlee.github.io/archives/2020/05/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://benettlee.github.io/2020/10/25/TDengine%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/',]
       });
       });
   </script>
